@@ -1,18 +1,18 @@
 <?php
 
-namespace VendorName\Skeleton\Facades;
+namespace Fintech\Card\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
  * // Crud Service Method Point Do not Remove //
  *
- * @see \VendorName\Skeleton\Skeleton
+ * @see \Fintech\Card\Card
  */
-class Skeleton extends Facade
+class Card extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \VendorName\Skeleton\Skeleton::class;
+        return \Fintech\Card\Card::class;
     }
 }

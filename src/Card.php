@@ -1,8 +1,8 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace Fintech\Card;
 
-class Skeleton
+class Card
 {
     //** Crud Service Method Point Do not Remove **//
 }
