@@ -2,9 +2,9 @@
 
 namespace Fintech\Card;
 
-use Illuminate\Support\ServiceProvider;
-use Fintech\Card\Commands\InstallCommand;
 use Fintech\Card\Commands\CardCommand;
+use Fintech\Card\Commands\InstallCommand;
+use Illuminate\Support\ServiceProvider;
 
 class CardServiceProvider extends ServiceProvider
 {
