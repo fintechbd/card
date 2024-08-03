@@ -2,10 +2,10 @@
 
 namespace Fintech\Card;
 
-use Illuminate\Support\ServiceProvider;
-use Fintech\Card\Commands\InstallCommand;
 use Fintech\Card\Commands\CardCommand;
+use Fintech\Card\Commands\InstallCommand;
 use Fintech\Card\Providers\RepositoryServiceProvider;
+use Illuminate\Support\ServiceProvider;
 
 class CardServiceProvider extends ServiceProvider
 {
@@ -37,7 +37,7 @@ class CardServiceProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__.'/../lang', 'card');
 
         $this->publishes([
-            __DIR__.'/../lang' => $this->app->langPath('vendor/card'),
+            __DIR__.'/../lang' => $this->app->langPath('fintech/card'),
         ]);
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'card');
