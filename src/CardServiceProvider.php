@@ -5,6 +5,7 @@ namespace Fintech\Card;
 use Illuminate\Support\ServiceProvider;
 use Fintech\Card\Commands\InstallCommand;
 use Fintech\Card\Commands\CardCommand;
+use Fintech\Card\Providers\RepositoryServiceProvider;
 
 class CardServiceProvider extends ServiceProvider
 {
@@ -19,7 +20,6 @@ class CardServiceProvider extends ServiceProvider
             __DIR__.'/../config/card.php', 'fintech.card'
         );
 
-        $this->app->register(RouteServiceProvider::class);
         $this->app->register(RepositoryServiceProvider::class);
     }
 
