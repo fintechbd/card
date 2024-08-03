@@ -24,6 +24,16 @@ return [
 
     'root_prefix' => 'test/',
 
+    
+    /*
+    |--------------------------------------------------------------------------
+    | InstantCard Model
+    |--------------------------------------------------------------------------
+    |
+    | This value will be used to across system where model is needed
+    */
+    'instant_card_model' => \Fintech\Card\Models\InstantCard::class,
+
     //** Model Config Point Do not Remove **//
 
     /*
@@ -35,6 +45,8 @@ return [
     */
 
     'repositories' => [
+        \Fintech\Card\Interfaces\InstantCardRepository::class => \Fintech\Card\Repositories\Eloquent\InstantCardRepository::class,
+
         //** Repository Binding Config Point Do not Remove **//
     ],
 
