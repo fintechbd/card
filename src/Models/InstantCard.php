@@ -4,8 +4,8 @@ namespace Fintech\Card\Models;
 
 use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Core\Traits\AuditableTrait;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class InstantCard extends BaseModel
 {
@@ -39,11 +39,9 @@ class InstantCard extends BaseModel
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-    
+
     /**
      * Get the user that owns the InstantCard
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user(): BelongsTo
     {
@@ -52,8 +50,6 @@ class InstantCard extends BaseModel
 
     /**
      * Get the approver that owns the InstantCard
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function approver(): BelongsTo
     {
@@ -62,8 +58,6 @@ class InstantCard extends BaseModel
 
     /**
      * Get the userAccount that owns the InstantCard
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function userAccount(): BelongsTo
     {
