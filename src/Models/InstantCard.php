@@ -5,6 +5,7 @@ namespace Fintech\Card\Models;
 use Fintech\Core\Traits\AuditableTrait;
 use Fintech\Core\Abstracts\BaseModel;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class InstantCard extends BaseModel
 {
@@ -23,7 +24,7 @@ class InstantCard extends BaseModel
 
     protected $appends = ['links'];
 
-    protected $casts = ['instant_card_data' => 'array', 'restored_at' => 'datetime', 'enabled' => 'bool'];
+    protected $casts = ['instant_card_data' => 'array', 'restored_at' => 'datetime', 'issued_at' => 'datetime', 'expired_at' => 'datetime', 'enabled' => 'bool'];
 
     protected $hidden = ['creator_id', 'editor_id', 'destroyer_id', 'restorer_id'];
 
@@ -38,6 +39,36 @@ class InstantCard extends BaseModel
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    
+    /**
+     * Get the user that owns the InstantCard
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(config('fintech.auth.user_model', \Fintech\Auth\Models\User::class));
+    }
+
+    /**
+     * Get the approver that owns the InstantCard
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function approver(): BelongsTo
+    {
+        return $this->belongsTo(config('fintech.auth.user_model', \Fintech\Auth\Models\User::class), 'approver_id');
+    }
+
+    /**
+     * Get the userAccount that owns the InstantCard
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function userAccount(): BelongsTo
+    {
+        return $this->belongsTo(config('fintech.transaction.user_account_model', \Fintech\Transaction\Models\UserAccount::class));
+    }
 
     /*
     |--------------------------------------------------------------------------

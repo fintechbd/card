@@ -30,6 +30,16 @@ class InstantCardService
 
     public function create(array $inputs = [])
     {
+        $inputs['name'] = \Str::upper($inputs['name']);
+        $inputs['number'] = \fake()->creditCardNumber(ucfirst($inputs['scheme']), true);
+        $inputs['cvc'] = mt_rand(100, 999);
+        $inputs['pin'] = mt_rand(1000, 9999);
+        $inputs['provider'] = 'default';
+        $inputs['status'] = 'pending';
+        $inputs['balance'] = 0;
+        $inputs['issued_at'] = \now();
+        $inputs['expired_at'] = \now()->addYears(5);
+
         return $this->instantCardRepository->create($inputs);
     }
 

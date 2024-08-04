@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('status')->nullable();
             $table->text('note')->nullable();
             $table->decimal('balance')->default(0);
-            $table->json('instant_cards_data')->nullable();
+            $table->json('instant_card_data')->nullable();
             $table->foreignId('approver_id')->nullable();
             $table->foreignId('creator_id')->nullable();
             $table->foreignId('editor_id')->nullable();
