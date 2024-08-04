@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('user_account_id')->nullable()->comment('currency');
-            $table->string('type')->default( 'virtual');
-            $table->string('scheme')->default( 'default');
+            $table->string('type')->default('virtual');
+            $table->string('scheme')->default('default');
             $table->string('name');
             $table->string('number')->nullable();
             $table->string('cvc')->nullable();

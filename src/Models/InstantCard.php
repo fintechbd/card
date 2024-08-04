@@ -2,14 +2,14 @@
 
 namespace Fintech\Card\Models;
 
-use Fintech\Core\Traits\AuditableTrait;
 use Fintech\Core\Abstracts\BaseModel;
+use Fintech\Core\Traits\AuditableTrait;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class InstantCard extends BaseModel
 {
-   use AuditableTrait;
-   use SoftDeletes;
+    use AuditableTrait;
+    use SoftDeletes;
 
     /*
     |--------------------------------------------------------------------------

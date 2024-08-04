@@ -2,24 +2,19 @@
 
 namespace Fintech\Card\Services;
 
-
 use Fintech\Card\Interfaces\InstantCardRepository;
 
 /**
  * Class InstantCardService
- * @package Fintech\Card\Services
- *
  */
 class InstantCardService
 {
     /**
      * InstantCardService constructor.
-     * @param InstantCardRepository $instantCardRepository
      */
-    public function __construct(private readonly InstantCardRepository $instantCardRepository) { }
+    public function __construct(private readonly InstantCardRepository $instantCardRepository) {}
 
     /**
-     * @param array $filters
      * @return mixed
      */
     public function list(array $filters = [])

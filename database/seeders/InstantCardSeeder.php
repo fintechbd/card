@@ -2,8 +2,8 @@
 
 namespace Fintech\Card\Seeders;
 
-use Illuminate\Database\Seeder;
 use Fintech\Card\Facades\Card;
+use Illuminate\Database\Seeder;
 
 class InstantCardSeeder extends Seeder
 {
@@ -24,6 +24,6 @@ class InstantCardSeeder extends Seeder
 
     private function data()
     {
-        return array();
+        return [];
     }
 }
