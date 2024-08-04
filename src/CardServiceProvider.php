@@ -43,7 +43,7 @@ class CardServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'card');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/card'),
+            __DIR__.'/../resources/views' => resource_path('views/fintech/card'),
         ]);
 
         if ($this->app->runningInConsole()) {
