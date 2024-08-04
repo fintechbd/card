@@ -2,22 +2,19 @@
 
 namespace Fintech\Card\Repositories\Mongodb;
 
-use Fintech\Core\Repositories\MongodbRepository;
 use Fintech\Card\Interfaces\InstantCardRepository as InterfacesInstantCardRepository;
+use Fintech\Core\Repositories\MongodbRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
-use MongoDB\Laravel\Eloquent\Model;
-use InvalidArgumentException;
 
 /**
  * Class InstantCardRepository
- * @package Fintech\Card\Repositories\Mongodb
  */
 class InstantCardRepository extends MongodbRepository implements InterfacesInstantCardRepository
 {
     public function __construct()
     {
-       parent::__construct(config('fintech.card.instant_card_model', \Fintech\Card\Models\InstantCard::class));
+        parent::__construct(config('fintech.card.instant_card_model', \Fintech\Card\Models\InstantCard::class));
     }
 
     /**

@@ -2,22 +2,19 @@
 
 namespace Fintech\Card\Repositories\Eloquent;
 
-use Fintech\Core\Repositories\EloquentRepository;
 use Fintech\Card\Interfaces\InstantCardRepository as InterfacesInstantCardRepository;
+use Fintech\Core\Repositories\EloquentRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Model;
-use InvalidArgumentException;
 
 /**
  * Class InstantCardRepository
- * @package Fintech\Card\Repositories\Eloquent
  */
 class InstantCardRepository extends EloquentRepository implements InterfacesInstantCardRepository
 {
     public function __construct()
     {
-       parent::__construct(config('fintech.card.instant_card_model', \Fintech\Card\Models\InstantCard::class));
+        parent::__construct(config('fintech.card.instant_card_model', \Fintech\Card\Models\InstantCard::class));
     }
 
     /**
