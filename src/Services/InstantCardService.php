@@ -5,7 +5,6 @@ namespace Fintech\Card\Services;
 use Fintech\Card\Interfaces\InstantCardRepository;
 use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Core\Enums\Ekyc\InstantCardStatus;
-use InvalidArgumentException;
 
 /**
  * Class InstantCardService
@@ -28,7 +27,7 @@ class InstantCardService
 
     private function setTimeline(array &$timeline = [], $status = 'pending', $note = null)
     {
-        if($timeline == null) {
+        if ($timeline == null) {
             $timeline = [[]];
         }
 
@@ -39,7 +38,7 @@ class InstantCardService
             'current_status' => $status,
             'dateime' => \now(),
             'note' => $note,
-            'user_id' => \auth()->id()
+            'user_id' => \auth()->id(),
         ];
     }
 
@@ -95,7 +94,6 @@ class InstantCardService
         $timeline = $instantCard->timeline;
 
         $this->setTimeline($timeline, $inputs['status'], $inputs['note']);
-
 
         return $this->instantCardRepository->update($instantCard->id, [
             'status' => $inputs['status'],
