@@ -37,6 +37,16 @@ class InstantCardRepository extends EloquentRepository implements InterfacesInst
             }
         }
 
+
+        //Display Trashed
+        if (!empty($filters['user_id'])) {
+            $query->where('user_id', "=", $filters['user_id']);
+        }
+
+        if (!empty($filters['user_account_id'])) {
+            $query->where('user_account_id', "=", $filters['user_account_id']);
+        }
+
         //Display Trashed
         if (isset($filters['trashed']) && $filters['trashed'] === true) {
             $query->onlyTrashed();
