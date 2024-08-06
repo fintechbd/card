@@ -54,7 +54,8 @@ class InstantCardService
         $inputs['issued_at'] = \now();
         $inputs['expired_at'] = \now()->addYears(5);
         $inputs['timeline'] = [];
-        $this->setTimeline($inputs['timeline'], $inputs['status'] ?? '', $inputs['note'] ?? null);
+        $inputs['note'] = $inputs['note'] ?? null;
+        $this->setTimeline($inputs['timeline'], $inputs['status'], $inputs['note']);
 
         return $this->instantCardRepository->create($inputs);
     }
