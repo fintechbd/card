@@ -29,7 +29,7 @@ class InstantCardService
     private function setTimeline(array &$timeline = [], $status = 'pending', $note = null)
     {
         if($timeline == null) {
-            $timeline = [];
+            $timeline = [[]];
         }
 
         $previous = end($timeline);
