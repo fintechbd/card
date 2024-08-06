@@ -3,6 +3,9 @@
 namespace Fintech\Card\Services;
 
 use Fintech\Card\Interfaces\InstantCardRepository;
+use Fintech\Core\Abstracts\BaseModel;
+use Fintech\Core\Enums\Ekyc\InstantCardStatus;
+use InvalidArgumentException;
 
 /**
  * Class InstantCardService
@@ -23,6 +26,23 @@ class InstantCardService
 
     }
 
+    private function setTimeline(array &$timeline = [], $status = 'pending', $note = null)
+    {
+        if($timeline == null) {
+            $timeline = [];
+        }
+
+        $previous = end($timeline);
+
+        $timeline[] = [
+            'previus_status' => $previous['current_status'] ?? null,
+            'current_status' => $status,
+            'dateime' => \now(),
+            'note' => $note,
+            'user_id' => \auth()->id()
+        ];
+    }
+
     public function create(array $inputs = [])
     {
         $inputs['name'] = \Str::upper($inputs['name']);
@@ -30,10 +50,12 @@ class InstantCardService
         $inputs['cvc'] = mt_rand(100, 999);
         $inputs['pin'] = mt_rand(1000, 9999);
         $inputs['provider'] = 'default';
-        $inputs['status'] = 'pending';
+        $inputs['status'] = InstantCardStatus::Pending->value;
         $inputs['balance'] = 0;
         $inputs['issued_at'] = \now();
         $inputs['expired_at'] = \now()->addYears(5);
+        $inputs['timeline'] = [];
+        $this->setTimeline($inputs['timeline'], $inputs['status'], $inputs['note']);
 
         return $this->instantCardRepository->create($inputs);
     }
@@ -66,5 +88,19 @@ class InstantCardService
     public function import(array $filters)
     {
         return $this->instantCardRepository->create($filters);
+    }
+
+    public function statusChange(BaseModel $instantCard, array $inputs = [])
+    {
+        $timeline = $instantCard->timeline;
+
+        $this->setTimeline($timeline, $inputs['status'], $inputs['note']);
+
+
+        return $this->instantCardRepository->update($instantCard->id, [
+            'status' => $inputs['status'],
+            'note' => $inputs['note'],
+            'timeline' => $timeline,
+        ]);
     }
 }
