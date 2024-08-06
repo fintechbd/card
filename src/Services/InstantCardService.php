@@ -25,7 +25,7 @@ class InstantCardService
 
     }
 
-    private function setTimeline(array &$timeline = [], $status = 'pending', $note = null)
+    private function setTimeline(array &$timeline, $status = 'pending', $note = null)
     {
         if ($timeline == null) {
             $timeline = [[]];
