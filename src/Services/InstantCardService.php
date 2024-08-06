@@ -45,7 +45,7 @@ class InstantCardService
     public function create(array $inputs = [])
     {
         $inputs['name'] = \Str::upper($inputs['name']);
-        $inputs['number'] = \fake()->creditCardNumber(ucfirst($inputs['scheme']), true);
+        $inputs['number'] = \fake()->creditCardNumber(($inputs['scheme'] == 'visa' ? 'Visa' : 'MasterCard'), true);
         $inputs['cvc'] = mt_rand(100, 999);
         $inputs['pin'] = mt_rand(1000, 9999);
         $inputs['provider'] = 'default';
