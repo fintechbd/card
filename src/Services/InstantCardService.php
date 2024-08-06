@@ -4,7 +4,7 @@ namespace Fintech\Card\Services;
 
 use Fintech\Card\Interfaces\InstantCardRepository;
 use Fintech\Core\Abstracts\BaseModel;
-use Fintech\Core\Enums\Ekyc\InstantCardStatus;
+use Fintech\Core\Enums\Card\InstantCardStatus;
 
 /**
  * Class InstantCardService
