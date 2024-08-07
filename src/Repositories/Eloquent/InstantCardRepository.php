@@ -47,7 +47,7 @@ class InstantCardRepository extends EloquentRepository implements InterfacesInst
         }
 
         if (! empty($filters['status'])) {
-            $query->whereIn('status', (array)$filters['status']);
+            $query->whereIn('status', (array) $filters['status']);
         }
 
         //Display Trashed
