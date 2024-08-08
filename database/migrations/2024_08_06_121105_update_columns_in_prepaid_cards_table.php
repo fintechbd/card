@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('instant_cards', function (Blueprint $table) {
+        Schema::table('prepaid_cards', function (Blueprint $table) {
             $table->json('timeline')->nullable()->after('instant_card_data');
             $table->string('block_reason')->nullable()->after('status');
         });
@@ -22,7 +22,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('instant_cards', function (Blueprint $table) {
+        Schema::table('prepaid_cards', function (Blueprint $table) {
             $table->dropColumn('timeline');
             $table->dropColumn('block_reason');
         });

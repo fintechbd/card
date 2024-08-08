@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('instant_cards', function (Blueprint $table) {
+        Schema::create('prepaid_cards', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
             $table->foreignId('user_account_id')->nullable()->comment('currency');
@@ -44,6 +44,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('instant_cards');
+        Schema::dropIfExists('prepaid_cards');
     }
 };
