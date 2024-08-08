@@ -7,9 +7,9 @@ use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Collection;
 
 /**
- * Interface InstantCardRepository
+ * Interface PrepaidCardRepository
  */
-interface InstantCardRepository
+interface PrepaidCardRepository
 {
     /**
      * return a list or pagination of items from

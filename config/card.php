@@ -31,7 +31,7 @@ return [
     |
     | This value will be used to across system where model is needed
     */
-    'instant_card_model' => \Fintech\Card\Models\InstantCard::class,
+    'prepaid_card_model' => \Fintech\Card\Models\PrepaidCard::class,
 
     //** Model Config Point Do not Remove **//
 
@@ -44,7 +44,7 @@ return [
     */
 
     'repositories' => [
-        \Fintech\Card\Interfaces\InstantCardRepository::class => \Fintech\Card\Repositories\Eloquent\InstantCardRepository::class,
+        \Fintech\Card\Interfaces\PrepaidCardRepository::class => \Fintech\Card\Repositories\Eloquent\PrepaidCardRepository::class,
 
         //** Repository Binding Config Point Do not Remove **//
     ],
