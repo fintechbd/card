@@ -5,7 +5,7 @@ namespace Fintech\Card\Facades;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static \Fintech\Card\Services\PrepaidCardService instantCard()
+ * @method static \Fintech\Card\Services\PrepaidCardService prepaidCard()
  *
  * // Crud Service Method Point Do not Remove //
  *

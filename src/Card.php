@@ -7,7 +7,7 @@ class Card
     /**
      * @return \Fintech\Card\Services\PrepaidCardService
      */
-    public function instantCard()
+    public function prepaidCard()
     {
         return app(\Fintech\Card\Services\PrepaidCardService::class);
     }
