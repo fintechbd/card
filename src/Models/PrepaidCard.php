@@ -22,8 +22,6 @@ class PrepaidCard extends BaseModel
 
     protected $guarded = ['id'];
 
-
-
     protected $casts = ['timeline' => 'array', 'instant_card_data' => 'array', 'restored_at' => 'datetime', 'issued_at' => 'datetime', 'expired_at' => 'datetime', 'enabled' => 'bool'];
 
     protected $hidden = ['creator_id', 'editor_id', 'destroyer_id', 'restorer_id'];
