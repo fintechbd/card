@@ -28,7 +28,7 @@ class PrepaidCardRepository extends EloquentRepository implements InterfacesPrep
         $query = $this->model->newQuery();
 
         //Searching
-        if (!empty($filters['search'])) {
+        if (! empty($filters['search'])) {
             $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             $query->orWhere('name', 'like', "%{$filters['search']}%");
             $query->orWhere('type', 'like', "%{$filters['search']}%");
@@ -46,28 +46,28 @@ class PrepaidCardRepository extends EloquentRepository implements InterfacesPrep
         }
 
         //Display Trashed
-        if (!empty($filters['user_id'])) {
+        if (! empty($filters['user_id'])) {
             $query->where('user_id', '=', $filters['user_id']);
         }
 
-        if (!empty($filters['user_account_id'])) {
+        if (! empty($filters['user_account_id'])) {
             $query->where('user_account_id', '=', $filters['user_account_id']);
         }
 
-        if (!empty($filters['type'])) {
+        if (! empty($filters['type'])) {
             $query->where('type', '=', $filters['type']);
         }
 
-        if (!empty($filters['scheme'])) {
+        if (! empty($filters['scheme'])) {
             $query->where('scheme', '=', $filters['scheme']);
         }
 
-        if (!empty($filters['provider'])) {
+        if (! empty($filters['provider'])) {
             $query->where('provider', '=', $filters['provider']);
         }
 
-        if (!empty($filters['status'])) {
-            $query->whereIn('status', (array)$filters['status']);
+        if (! empty($filters['status'])) {
+            $query->whereIn('status', (array) $filters['status']);
         }
 
         //Display Trashed
