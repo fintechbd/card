@@ -33,7 +33,7 @@ class PrepaidCardRepository extends EloquentRepository implements InterfacesPrep
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {
                 $query->where('name', 'like', "%{$filters['search']}%");
-                $query->orWhere('instant_card_data', 'like', "%{$filters['search']}%");
+                $query->orWhere('prepaid_card_data', 'like', "%{$filters['search']}%");
             }
         }
 
