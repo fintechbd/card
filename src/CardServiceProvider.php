@@ -17,7 +17,7 @@ class CardServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/card.php', 'fintech.card'
+            __DIR__.'/../config/card.php', 'fintech.card'
         );
 
         $this->app->register(RepositoryServiceProvider::class);
@@ -29,21 +29,21 @@ class CardServiceProvider extends ServiceProvider
     public function boot(): void
     {
         $this->publishes([
-            __DIR__ . '/../config/card.php' => config_path('fintech/card.php'),
+            __DIR__.'/../config/card.php' => config_path('fintech/card.php'),
         ]);
 
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
-        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'card');
+        $this->loadTranslationsFrom(__DIR__.'/../lang', 'card');
 
         $this->publishes([
-            __DIR__ . '/../lang' => $this->app->langPath('fintech/card'),
+            __DIR__.'/../lang' => $this->app->langPath('fintech/card'),
         ]);
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'card');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'card');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/fintech/card'),
+            __DIR__.'/../resources/views' => resource_path('views/fintech/card'),
         ]);
 
         if ($this->app->runningInConsole()) {

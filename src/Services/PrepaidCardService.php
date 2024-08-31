@@ -14,9 +14,7 @@ class PrepaidCardService
     /**
      * PrepaidCardService constructor.
      */
-    public function __construct(private readonly PrepaidCardRepository $prepaidCardRepository)
-    {
-    }
+    public function __construct(private readonly PrepaidCardRepository $prepaidCardRepository) {}
 
     /**
      * @return mixed
