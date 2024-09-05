@@ -1,6 +1,9 @@
 <?php
 
 // config for Fintech/Card
+use Fintech\Card\Models\PrepaidCard;
+use Fintech\Card\Repositories\Eloquent\PrepaidCardRepository;
+
 return [
 
     /*
@@ -31,7 +34,7 @@ return [
     |
     | This value will be used to across system where model is needed
     */
-    'prepaid_card_model' => \Fintech\Card\Models\PrepaidCard::class,
+    'prepaid_card_model' => PrepaidCard::class,
 
     //** Model Config Point Do not Remove **//
 
@@ -44,7 +47,7 @@ return [
     */
 
     'repositories' => [
-        \Fintech\Card\Interfaces\PrepaidCardRepository::class => \Fintech\Card\Repositories\Eloquent\PrepaidCardRepository::class,
+        \Fintech\Card\Interfaces\PrepaidCardRepository::class => PrepaidCardRepository::class,
 
         //** Repository Binding Config Point Do not Remove **//
     ],

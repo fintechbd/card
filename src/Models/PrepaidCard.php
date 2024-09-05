@@ -2,8 +2,10 @@
 
 namespace Fintech\Card\Models;
 
+use Fintech\Auth\Models\User;
 use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Core\Traits\AuditableTrait;
+use Fintech\Transaction\Models\UserAccount;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -43,7 +45,7 @@ class PrepaidCard extends BaseModel
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(config('fintech.auth.user_model', \Fintech\Auth\Models\User::class));
+        return $this->belongsTo(config('fintech.auth.user_model', User::class));
     }
 
     /**
@@ -51,7 +53,7 @@ class PrepaidCard extends BaseModel
      */
     public function approver(): BelongsTo
     {
-        return $this->belongsTo(config('fintech.auth.user_model', \Fintech\Auth\Models\User::class), 'approver_id');
+        return $this->belongsTo(config('fintech.auth.user_model', User::class), 'approver_id');
     }
 
     /**
@@ -59,7 +61,7 @@ class PrepaidCard extends BaseModel
      */
     public function userAccount(): BelongsTo
     {
-        return $this->belongsTo(config('fintech.transaction.user_account_model', \Fintech\Transaction\Models\UserAccount::class));
+        return $this->belongsTo(config('fintech.transaction.user_account_model', UserAccount::class));
     }
 
     /*

@@ -5,6 +5,10 @@ namespace Fintech\Card\Services;
 use Fintech\Card\Interfaces\PrepaidCardRepository;
 use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Core\Enums\Card\PrepaidCardStatus;
+use Str;
+use function auth;
+use function fake;
+use function now;
 
 /**
  * Class PrepaidCardService
@@ -14,7 +18,9 @@ class PrepaidCardService
     /**
      * PrepaidCardService constructor.
      */
-    public function __construct(private readonly PrepaidCardRepository $prepaidCardRepository) {}
+    public function __construct(private readonly PrepaidCardRepository $prepaidCardRepository)
+    {
+    }
 
     /**
      * @return mixed
@@ -36,23 +42,23 @@ class PrepaidCardService
         $timeline[] = [
             'previus_status' => $previous['current_status'] ?? null,
             'current_status' => $status,
-            'dateime' => \now(),
+            'dateime' => now(),
             'note' => $note,
-            'user_id' => \auth()->id(),
+            'user_id' => auth()->id(),
         ];
     }
 
     public function create(array $inputs = [])
     {
-        $inputs['name'] = \Str::upper($inputs['name']);
-        $inputs['number'] = \fake()->creditCardNumber(($inputs['scheme'] == 'visa' ? 'Visa' : 'MasterCard'), true);
+        $inputs['name'] = Str::upper($inputs['name']);
+        $inputs['number'] = fake()->creditCardNumber(($inputs['scheme'] == 'visa' ? 'Visa' : 'MasterCard'), true);
         $inputs['cvc'] = mt_rand(100, 999);
         $inputs['pin'] = mt_rand(1000, 9999);
         $inputs['provider'] = 'default';
         $inputs['status'] = PrepaidCardStatus::Pending->value;
         $inputs['balance'] = 0;
-        $inputs['issued_at'] = \now();
-        $inputs['expired_at'] = \now()->addYears(5);
+        $inputs['issued_at'] = now();
+        $inputs['expired_at'] = now()->addYears(5);
         $inputs['timeline'] = [];
         $inputs['note'] = $inputs['note'] ?? null;
         $this->setTimeline($inputs['timeline'], $inputs['status'], $inputs['note']);

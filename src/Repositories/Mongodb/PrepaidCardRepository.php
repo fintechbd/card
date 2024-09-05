@@ -3,6 +3,7 @@
 namespace Fintech\Card\Repositories\Mongodb;
 
 use Fintech\Card\Interfaces\PrepaidCardRepository as InterfacesPrepaidCardRepository;
+use Fintech\Card\Models\PrepaidCard;
 use Fintech\Core\Repositories\MongodbRepository;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Database\Eloquent\Collection;
@@ -14,7 +15,7 @@ class PrepaidCardRepository extends MongodbRepository implements InterfacesPrepa
 {
     public function __construct()
     {
-        parent::__construct(config('fintech.card.prepaid_card_model', \Fintech\Card\Models\PrepaidCard::class));
+        parent::__construct(config('fintech.card.prepaid_card_model', PrepaidCard::class));
     }
 
     /**
@@ -28,7 +29,7 @@ class PrepaidCardRepository extends MongodbRepository implements InterfacesPrepa
         $query = $this->model->newQuery();
 
         //Searching
-        if (! empty($filters['search'])) {
+        if (!empty($filters['search'])) {
             if (is_numeric($filters['search'])) {
                 $query->where($this->model->getKeyName(), 'like', "%{$filters['search']}%");
             } else {
