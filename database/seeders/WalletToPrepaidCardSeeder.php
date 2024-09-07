@@ -18,7 +18,7 @@ class WalletToPrepaidCardSeeder extends Seeder
 
             $parent = Business::serviceType()->list(['service_type_slug' => 'withdraw'])->first();
 
-            $servingCountries = MetaData::country()->list(['is_serving' => true])->pluck('id')->toArray();
+            $servingCountries = MetaData::country()->servingIds();;
 
             Business::serviceTypeManager($this->data(), $parent)
                 ->srcCountries($servingCountries)
