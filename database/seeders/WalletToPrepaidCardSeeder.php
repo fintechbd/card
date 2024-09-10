@@ -25,7 +25,6 @@ class WalletToPrepaidCardSeeder extends Seeder
                 ->distCountries($servingCountries)
                 ->hasService()
                 ->hasTransactionForm()
-                ->enabled()
                 ->execute();
         }
     }
