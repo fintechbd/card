@@ -6,7 +6,6 @@ use Fintech\Card\Interfaces\PrepaidCardRepository;
 use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Core\Enums\Card\PrepaidCardStatus;
 use Str;
-
 use function auth;
 use function fake;
 use function now;
@@ -19,7 +18,29 @@ class PrepaidCardService
     /**
      * PrepaidCardService constructor.
      */
-    public function __construct(private readonly PrepaidCardRepository $prepaidCardRepository) {}
+    public function __construct(private readonly PrepaidCardRepository $prepaidCardRepository)
+    {
+    }
+
+    public function find($id, $onlyTrashed = false)
+    {
+        return $this->prepaidCardRepository->find($id, $onlyTrashed);
+    }
+
+    public function destroy($id)
+    {
+        return $this->prepaidCardRepository->delete($id);
+    }
+
+    public function restore($id)
+    {
+        return $this->prepaidCardRepository->restore($id);
+    }
+
+    public function export(array $filters)
+    {
+        return $this->prepaidCardRepository->list($filters);
+    }
 
     /**
      * @return mixed
@@ -30,21 +51,9 @@ class PrepaidCardService
 
     }
 
-    private function setTimeline(&$timeline, $status = 'pending', $note = null)
+    public function import(array $filters)
     {
-        if ($timeline == null) {
-            $timeline = [[]];
-        }
-
-        $previous = end($timeline);
-
-        $timeline[] = [
-            'previus_status' => $previous['current_status'] ?? null,
-            'current_status' => $status,
-            'dateime' => now(),
-            'note' => $note,
-            'user_id' => auth()->id(),
-        ];
+        return $this->prepaidCardRepository->create($filters);
     }
 
     public function create(array $inputs = [])
@@ -65,34 +74,21 @@ class PrepaidCardService
         return $this->prepaidCardRepository->create($inputs);
     }
 
-    public function find($id, $onlyTrashed = false)
+    private function setTimeline(&$timeline, $status = 'pending', $note = null)
     {
-        return $this->prepaidCardRepository->find($id, $onlyTrashed);
-    }
+        if ($timeline == null) {
+            $timeline = [[]];
+        }
 
-    public function update($id, array $inputs = [])
-    {
-        return $this->prepaidCardRepository->update($id, $inputs);
-    }
+        $previous = end($timeline);
 
-    public function destroy($id)
-    {
-        return $this->prepaidCardRepository->delete($id);
-    }
-
-    public function restore($id)
-    {
-        return $this->prepaidCardRepository->restore($id);
-    }
-
-    public function export(array $filters)
-    {
-        return $this->prepaidCardRepository->list($filters);
-    }
-
-    public function import(array $filters)
-    {
-        return $this->prepaidCardRepository->create($filters);
+        $timeline[] = [
+            'previus_status' => $previous['current_status'] ?? null,
+            'current_status' => $status,
+            'dateime' => now(),
+            'note' => $note,
+            'user_id' => auth()->id(),
+        ];
     }
 
     public function statusChange(BaseModel $prepaidCard, array $inputs = [])
@@ -106,5 +102,10 @@ class PrepaidCardService
             'note' => $inputs['note'],
             'timeline' => $timeline,
         ]);
+    }
+
+    public function update($id, array $inputs = [])
+    {
+        return $this->prepaidCardRepository->update($id, $inputs);
     }
 }
