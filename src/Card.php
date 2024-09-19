@@ -6,9 +6,6 @@ use Fintech\Card\Services\PrepaidCardService;
 
 class Card
 {
-    /**
-     * @return PrepaidCardService
-     */
     public function prepaidCard($filters = null)
     {
         return \singleton(PrepaidCardService::class, $filters);
