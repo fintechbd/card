@@ -14,7 +14,7 @@ use function now;
 /**
  * Class PrepaidCardService
  */
-class PrepaidCardService
+class PrepaidCardService extends \Fintech\Core\Abstracts\Service
 {
     /**
      * PrepaidCardService constructor.
