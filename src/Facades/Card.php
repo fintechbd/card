@@ -6,7 +6,7 @@ use Fintech\Card\Services\PrepaidCardService;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static PrepaidCardService prepaidCard()
+ * @method static \Illuminate\Contracts\Pagination\Paginator|\Illuminate\Support\Collection|PrepaidCardService prepaidCard(array $filters = null)
  *
  * // Crud Service Method Point Do not Remove //
  *
