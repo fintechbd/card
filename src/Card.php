@@ -9,9 +9,9 @@ class Card
     /**
      * @return PrepaidCardService
      */
-    public function prepaidCard()
-    {
-        return app(PrepaidCardService::class);
+    public function prepaidCard($filters = null)
+{
+	return \singleton(PrepaidCardService::class, $filters);
     }
 
     //** Crud Service Method Point Do not Remove **//
