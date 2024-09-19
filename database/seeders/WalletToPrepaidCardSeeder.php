@@ -16,7 +16,7 @@ class WalletToPrepaidCardSeeder extends Seeder
     {
         if (Core::packageExists('Business')) {
 
-            $parent = Business::serviceType()->list(['service_type_slug' => 'withdraw'])->first();
+            $parent = Business::serviceType()->findWhere(['service_type_slug' => 'withdraw']);
 
             $servingCountries = MetaData::country()->servingIds();
 
