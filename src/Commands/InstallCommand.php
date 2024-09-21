@@ -19,7 +19,7 @@ class InstallCommand extends Command
     {
         $this->infoMessage('Module Installation', 'RUNNING');
 
-        $this->task('Module Installation', function () {}, 'COMPLETED');
+        $this->task('Module Installation', function () {});
 
         return self::SUCCESS;
     }
