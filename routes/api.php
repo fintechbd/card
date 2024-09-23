@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 if (Config::get('fintech.card.enabled')) {
-    Route::prefix(config('fintech.card.root_prefix', 'api/'))->middleware(['api', 'http_log', 'encrypted'])->group(function () {
+    Route::prefix(config('fintech.card.root_prefix', 'api/'))->middleware(['api'])->group(function () {
         Route::prefix('card')->name('card.')
             ->middleware(config('fintech.auth.middleware'))
             ->group(function () {
