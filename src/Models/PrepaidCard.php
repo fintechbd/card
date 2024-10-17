@@ -5,13 +5,16 @@ namespace Fintech\Card\Models;
 use Fintech\Auth\Models\User;
 use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Core\Traits\AuditableTrait;
+use Fintech\Core\Traits\BlameableTrait;
 use Fintech\Transaction\Models\UserAccount;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use OwenIt\Auditing\Contracts\Auditable;
 
-class PrepaidCard extends BaseModel
+class PrepaidCard extends BaseModel implements Auditable
 {
-    use AuditableTrait;
+    use \OwenIt\Auditing\Auditable;
+    use BlameableTrait;
     use SoftDeletes;
 
     /*
