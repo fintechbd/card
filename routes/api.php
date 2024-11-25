@@ -1,6 +1,6 @@
 <?php
 
-use Fintech\RestApi\Http\Controllers\Card\PrepaidCardController;
+use Fintech\Card\Http\Controllers\PrepaidCardController;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Route;
 
