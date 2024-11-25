@@ -4,7 +4,7 @@ namespace Fintech\Card\Models;
 
 use Fintech\Auth\Models\User;
 use Fintech\Core\Abstracts\BaseModel;
-use Fintech\Core\Traits\BlameableTrait;
+use Fintech\Core\Traits\Audits\BlameableTrait;
 use Fintech\Transaction\Models\UserAccount;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
