@@ -74,7 +74,7 @@ class PrepaidCardController extends Controller
             }
 
             return response()->created([
-                'message' => __('restapi::messages.resource.created', ['model' => 'Prepaid Card']),
+                'message' => __('core::messages.resource.created', ['model' => 'Prepaid Card']),
                 'id' => $prepaidCard->id,
             ]);
 
@@ -140,7 +140,7 @@ class PrepaidCardController extends Controller
                 throw (new UpdateOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
 
-            return response()->updated(__('restapi::messages.resource.updated', ['model' => 'Prepaid Card']));
+            return response()->updated(__('core::messages.resource.updated', ['model' => 'Prepaid Card']));
 
         } catch (ModelNotFoundException $exception) {
 
@@ -178,7 +178,7 @@ class PrepaidCardController extends Controller
                 throw (new DeleteOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
 
-            return response()->deleted(__('restapi::messages.resource.deleted', ['model' => 'Prepaid Card']));
+            return response()->deleted(__('core::messages.resource.deleted', ['model' => 'Prepaid Card']));
 
         } catch (ModelNotFoundException $exception) {
 
@@ -214,7 +214,7 @@ class PrepaidCardController extends Controller
                 throw (new RestoreOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
 
-            return response()->restored(__('restapi::messages.resource.restored', ['model' => 'Prepaid Card']));
+            return response()->restored(__('core::messages.resource.restored', ['model' => 'Prepaid Card']));
 
         } catch (ModelNotFoundException $exception) {
 
@@ -240,7 +240,7 @@ class PrepaidCardController extends Controller
 
             $prepaidCardPaginate = Card::prepaidCard()->export($inputs);
 
-            return response()->exported(__('restapi::messages.resource.exported', ['model' => 'Prepaid Card']));
+            return response()->exported(__('core::messages.resource.exported', ['model' => 'Prepaid Card']));
 
         } catch (Exception $exception) {
 
@@ -298,7 +298,7 @@ class PrepaidCardController extends Controller
                 throw (new UpdateOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
 
-            return response()->updated(__('restapi::messages.resource.updated', ['model' => 'Prepaid Card']));
+            return response()->updated(__('core::messages.resource.updated', ['model' => 'Prepaid Card']));
 
         } catch (ModelNotFoundException $exception) {
 
