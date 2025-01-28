@@ -22,7 +22,7 @@ if (Config::get('fintech.card.enabled')) {
                 //            Route::post('prepaid-cards/{prepaid_card}/restore', [PrepaidCardController::class, 'restore'])->name('prepaid-cards.restore');
                 Route::post('prepaid-cards/{prepaid_card}/status', [PrepaidCardController::class, 'status'])->name('prepaid-cards.status');
                 Route::apiResource('prepaid-cards', PrepaidCardController::class);
-                //DO NOT REMOVE THIS LINE//
+                // DO NOT REMOVE THIS LINE//
             });
         Route::prefix('dropdown')->name('card.')->group(function () {
             Route::get('prepaid-cards', [PrepaidCardController::class, 'dropdown'])->name('prepaid-cards.dropdown');

@@ -28,7 +28,7 @@ class PrepaidCardRepository extends EloquentRepository implements InterfacesPrep
     {
         $query = $this->model->newQuery();
 
-        //Searching
+        // Searching
         if (! empty($filters['search'])) {
             $query->where(function ($query) use ($filters) {
                 return $query->where('name', 'like', "%{$filters['search']}%")
@@ -42,7 +42,7 @@ class PrepaidCardRepository extends EloquentRepository implements InterfacesPrep
             });
         }
 
-        //Display Trashed
+        // Display Trashed
         if (! empty($filters['user_id'])) {
             $query->where('user_id', '=', $filters['user_id']);
         }
@@ -67,15 +67,15 @@ class PrepaidCardRepository extends EloquentRepository implements InterfacesPrep
             $query->whereIn('status', (array) $filters['status']);
         }
 
-        //Display Trashed
+        // Display Trashed
         if (isset($filters['trashed']) && $filters['trashed'] === true) {
             $query->onlyTrashed();
         }
 
-        //Handle Sorting
+        // Handle Sorting
         $query->orderBy($filters['sort'] ?? $this->model->getKeyName(), $filters['dir'] ?? 'asc');
 
-        //Execute Output
+        // Execute Output
         return $this->executeQuery($query, $filters);
 
     }

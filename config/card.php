@@ -36,7 +36,7 @@ return [
     */
     'prepaid_card_model' => PrepaidCard::class,
 
-    //** Model Config Point Do not Remove **//
+    // ** Model Config Point Do not Remove **//
 
     /*
     |--------------------------------------------------------------------------
@@ -49,7 +49,7 @@ return [
     'repositories' => [
         \Fintech\Card\Interfaces\PrepaidCardRepository::class => PrepaidCardRepository::class,
 
-        //** Repository Binding Config Point Do not Remove **//
+        // ** Repository Binding Config Point Do not Remove **//
     ],
 
 ];
