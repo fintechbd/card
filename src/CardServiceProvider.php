@@ -30,7 +30,7 @@ class CardServiceProvider extends ServiceProvider
     {
         $this->publishes([
             __DIR__.'/../config/card.php' => config_path('fintech/card.php'),
-        ]);
+        ], 'fintech-card-config');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
@@ -38,7 +38,7 @@ class CardServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../lang' => $this->app->langPath('fintech/card'),
-        ]);
+        ], 'fintech-card-lang');
 
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'card');
 
@@ -46,7 +46,7 @@ class CardServiceProvider extends ServiceProvider
 
         $this->publishes([
             __DIR__.'/../resources/views' => resource_path('views/fintech/card'),
-        ]);
+        ], 'fintech-card-views');
 
         if ($this->app->runningInConsole()) {
             $this->commands([
