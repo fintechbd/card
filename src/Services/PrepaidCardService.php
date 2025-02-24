@@ -6,6 +6,7 @@ use Fintech\Card\Interfaces\PrepaidCardRepository;
 use Fintech\Core\Abstracts\BaseModel;
 use Fintech\Core\Enums\Card\PrepaidCardStatus;
 use Str;
+
 use function auth;
 use function fake;
 use function now;
