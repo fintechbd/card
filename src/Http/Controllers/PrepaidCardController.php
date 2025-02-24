@@ -104,7 +104,7 @@ class PrepaidCardController extends Controller
 
             return new PrepaidCardResource($prepaidCard);
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -138,7 +138,7 @@ class PrepaidCardController extends Controller
 
             return response()->updated(__('core::messages.resource.updated', ['model' => 'Prepaid Card']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -172,7 +172,7 @@ class PrepaidCardController extends Controller
 
             return response()->deleted(__('core::messages.resource.deleted', ['model' => 'Prepaid Card']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -204,7 +204,7 @@ class PrepaidCardController extends Controller
 
             return response()->restored(__('core::messages.resource.restored', ['model' => 'Prepaid Card']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
@@ -284,7 +284,7 @@ class PrepaidCardController extends Controller
 
             return response()->updated(__('core::messages.resource.updated', ['model' => 'Prepaid Card']));
 
-        }  catch (Exception $exception) {
+        } catch (Exception $exception) {
 
             return response()->failed($exception);
         }
