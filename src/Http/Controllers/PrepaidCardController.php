@@ -130,7 +130,7 @@ class PrepaidCardController extends Controller
 
             $inputs = $request->validated();
 
-            if (!card()->prepaidCard()->update($id, $inputs)) {
+            if (! card()->prepaidCard()->update($id, $inputs)) {
 
                 throw (new UpdateOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
@@ -164,7 +164,7 @@ class PrepaidCardController extends Controller
                 throw (new ModelNotFoundException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
 
-            if (!card()->prepaidCard()->destroy($id)) {
+            if (! card()->prepaidCard()->destroy($id)) {
 
                 throw (new DeleteOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
@@ -196,7 +196,7 @@ class PrepaidCardController extends Controller
                 throw (new ModelNotFoundException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
 
-            if (!card()->prepaidCard()->restore($id)) {
+            if (! card()->prepaidCard()->restore($id)) {
 
                 throw (new RestoreOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
@@ -276,7 +276,7 @@ class PrepaidCardController extends Controller
 
             $inputs = $request->validated();
 
-            if (!card()->prepaidCard()->statusChange($prepaidCard, $inputs)) {
+            if (! card()->prepaidCard()->statusChange($prepaidCard, $inputs)) {
 
                 throw (new UpdateOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
