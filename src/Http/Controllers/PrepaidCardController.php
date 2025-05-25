@@ -3,7 +3,6 @@
 namespace Fintech\Card\Http\Controllers;
 
 use Exception;
-use Fintech\Card\Facades\Card;
 use Fintech\Card\Http\Requests\ImportPrepaidCardRequest;
 use Fintech\Card\Http\Requests\IndexPrepaidCardRequest;
 use Fintech\Card\Http\Requests\StorePrepaidCardRequest;
@@ -44,7 +43,7 @@ class PrepaidCardController extends Controller
         try {
             $inputs = $request->validated();
 
-            $prepaidCardPaginate = Card::prepaidCard()->list($inputs);
+            $prepaidCardPaginate = card()->prepaidCard()->list($inputs);
 
             return new PrepaidCardCollection($prepaidCardPaginate);
 
@@ -67,7 +66,7 @@ class PrepaidCardController extends Controller
         try {
             $inputs = $request->validated();
 
-            $prepaidCard = Card::prepaidCard()->create($inputs);
+            $prepaidCard = card()->prepaidCard()->create($inputs);
 
             if (! $prepaidCard) {
                 throw (new StoreOperationException)->setModel(config('fintech.card.prepaid_card_model'));
@@ -96,7 +95,7 @@ class PrepaidCardController extends Controller
     {
         try {
 
-            $prepaidCard = Card::prepaidCard()->find($id);
+            $prepaidCard = card()->prepaidCard()->find($id);
 
             if (! $prepaidCard) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.card.prepaid_card_model'), $id);
@@ -123,7 +122,7 @@ class PrepaidCardController extends Controller
     {
         try {
 
-            $prepaidCard = Card::prepaidCard()->find($id);
+            $prepaidCard = card()->prepaidCard()->find($id);
 
             if (! $prepaidCard) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.card.prepaid_card_model'), $id);
@@ -131,7 +130,7 @@ class PrepaidCardController extends Controller
 
             $inputs = $request->validated();
 
-            if (! Card::prepaidCard()->update($id, $inputs)) {
+            if (!card()->prepaidCard()->update($id, $inputs)) {
 
                 throw (new UpdateOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
@@ -159,13 +158,13 @@ class PrepaidCardController extends Controller
     {
         try {
 
-            $prepaidCard = Card::prepaidCard()->find($id);
+            $prepaidCard = card()->prepaidCard()->find($id);
 
             if (! $prepaidCard) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
 
-            if (! Card::prepaidCard()->destroy($id)) {
+            if (!card()->prepaidCard()->destroy($id)) {
 
                 throw (new DeleteOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
@@ -191,13 +190,13 @@ class PrepaidCardController extends Controller
     {
         try {
 
-            $prepaidCard = Card::prepaidCard()->find($id, true);
+            $prepaidCard = card()->prepaidCard()->find($id, true);
 
             if (! $prepaidCard) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
 
-            if (! Card::prepaidCard()->restore($id)) {
+            if (!card()->prepaidCard()->restore($id)) {
 
                 throw (new RestoreOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
@@ -222,7 +221,7 @@ class PrepaidCardController extends Controller
         try {
             $inputs = $request->validated();
 
-            $prepaidCardPaginate = Card::prepaidCard()->export($inputs);
+            $prepaidCardPaginate = card()->prepaidCard()->export($inputs);
 
             return response()->exported(__('core::messages.resource.exported', ['model' => 'Prepaid Card']));
 
@@ -246,7 +245,7 @@ class PrepaidCardController extends Controller
         try {
             $inputs = $request->validated();
 
-            $prepaidCardPaginate = Card::prepaidCard()->list($inputs);
+            $prepaidCardPaginate = card()->prepaidCard()->list($inputs);
 
             return new PrepaidCardCollection($prepaidCardPaginate);
 
@@ -269,7 +268,7 @@ class PrepaidCardController extends Controller
     {
         try {
 
-            $prepaidCard = Card::prepaidCard()->find($id);
+            $prepaidCard = card()->prepaidCard()->find($id);
 
             if (! $prepaidCard) {
                 throw (new ModelNotFoundException)->setModel(config('fintech.card.prepaid_card_model'), $id);
@@ -277,7 +276,7 @@ class PrepaidCardController extends Controller
 
             $inputs = $request->validated();
 
-            if (! Card::prepaidCard()->statusChange($prepaidCard, $inputs)) {
+            if (!card()->prepaidCard()->statusChange($prepaidCard, $inputs)) {
 
                 throw (new UpdateOperationException)->setModel(config('fintech.card.prepaid_card_model'), $id);
             }
@@ -311,7 +310,7 @@ class PrepaidCardController extends Controller
                 unset($filters['attribute']);
             }
 
-            $entries = Card::prepaidCard()->list($filters)->map(function ($entry) use ($label, $attribute) {
+            $entries = card()->prepaidCard()->list($filters)->map(function ($entry) use ($label, $attribute) {
                 return [
                     'label' => $entry->{$label} ?? 'name',
                     'attribute' => $entry->{$attribute} ?? 'id',

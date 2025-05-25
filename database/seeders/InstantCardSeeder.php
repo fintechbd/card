@@ -2,7 +2,6 @@
 
 namespace Fintech\Card\Seeders;
 
-use Fintech\Card\Facades\Card;
 use Illuminate\Database\Seeder;
 
 class InstantCardSeeder extends Seeder
@@ -17,7 +16,7 @@ class InstantCardSeeder extends Seeder
         foreach (array_chunk($data, 200) as $block) {
             set_time_limit(2100);
             foreach ($block as $entry) {
-                Card::instantCard()->create($entry);
+                card()->instantCard()->create($entry);
             }
         }
     }

@@ -2,7 +2,6 @@
 
 namespace Fintech\Card\Seeders;
 
-use Fintech\Business\Facades\Business;
 use Fintech\Core\Facades\Core;
 use Fintech\MetaData\Facades\MetaData;
 use Illuminate\Database\Seeder;
@@ -16,11 +15,11 @@ class WalletToPrepaidCardSeeder extends Seeder
     {
         if (Core::packageExists('Business')) {
 
-            $parent = Business::serviceType()->findWhere(['service_type_slug' => 'withdraw']);
+            $parent = business()->serviceType()->findWhere(['service_type_slug' => 'withdraw']);
 
             $servingCountries = MetaData::country()->servingIds();
 
-            Business::serviceTypeManager($this->data(), $parent)
+            business()->serviceTypeManager($this->data(), $parent)
                 ->srcCountries($servingCountries)
                 ->distCountries($servingCountries)
                 ->hasService()
